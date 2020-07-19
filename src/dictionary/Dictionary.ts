@@ -24,7 +24,7 @@ export class Dictionary{
             id int primary key auto_increment,
             word varchar(64),
             pronunciation varchar(64),
-            part_of_speech enum('noun','verb','adjective','adverb','pronoun','preposition','conjunction','numeral','measure','auxiliary','interjection','imitation'),
+            part_of_speech enum('noun','verb','adjective','adverb','pronoun','preposition','conjunction','numeral','measure','auxiliary','interjection','imitation','affix'),
             meaning varchar(1024),
             translation varchar(1024),
             example varchar(1024),
@@ -64,7 +64,7 @@ export class Dictionary{
         */
     }
 
-    async queryItem(word?:string,pronunciation?:string){
+    async queryItems(word?:string,pronunciation?:string){
         this.checkOpenedDictName();
         let clauseArray:string[] = [];
         let valuesArray:string[] = [];
@@ -104,6 +104,14 @@ export class Dictionary{
         this.checkOpenedDictName();
         let result:Item[] = await this.connectionLayer.query(
             `select * from ${this.dictionaryName} where id in (${idList.join(',')})`
+        );
+        return result;
+    }
+
+    async deleteItems(idList:number[]){
+        this.checkOpenedDictName();
+        let result = await this.connectionLayer.query(
+            `delete from ${this.dictionaryName} where id in (${idList.join(',')})`
         );
         return result;
     }

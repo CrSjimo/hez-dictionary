@@ -11,4 +11,5 @@ export enum PartOfSpeech{
     auxiliary, //助词
     interjection, //叹词
     imitation, //拟词
+    affix, //接附词
 }

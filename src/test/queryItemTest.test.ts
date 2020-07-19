@@ -11,5 +11,5 @@ import { VerbCases } from "../declaration/VerbCases";
     });
     let dict = new Dictionary(connectionLayer);
     dict.dictionaryName = 'test';
-    console.log(await dict.queryItem('','testo'));
+    console.log(await dict.queryItems('','testo'));
 })();

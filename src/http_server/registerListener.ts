@@ -1,11 +1,12 @@
 import * as hapi from '@hapi/hapi';
+import { InteractionHost } from '../user_interface/InteractionHost';
 
-export async function registerListener(server:hapi.Server){
+export function registerListener(server:hapi.Server,host:InteractionHost){
     server.route({
         path:'/',
         method:'*',
-        handler:(request,h)=>{
-            
+        handler:async(request,h)=>{
+            return await host.execute(request.payload as any);
         }
-    })
+    });
 }
