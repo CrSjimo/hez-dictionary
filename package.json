@@ -1,0 +1,35 @@
+{
+  "name": "hez-dictionary",
+  "version": "1.0.0",
+  "description": "hez dictionary editor",
+  "main": "out/index.js",
+  "scripts": {
+    "test": "mocha out/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrSjimo/hez-dictionary.git"
+  },
+  "keywords": [
+    "dictionary",
+    "language"
+  ],
+  "author": "Crindzebra Sjimo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CrSjimo/hez-dictionary/issues"
+  },
+  "homepage": "https://github.com/CrSjimo/hez-dictionary#readme",
+  "dependencies": {
+    "@hapi/hapi": "^19.2.0",
+    "@types/hapi__hapi": "^19.0.3",
+    "@types/mysql": "^2.15.15",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^8.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1"
+  }
+}
