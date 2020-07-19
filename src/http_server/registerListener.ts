@@ -3,7 +3,7 @@ import { InteractionHost } from '../user_interface/InteractionHost';
 
 export function registerListener(server:hapi.Server,host:InteractionHost){
     server.route({
-        path:'/',
+        path:'/api',
         method:'*',
         handler:async(request,h)=>{
             return await host.execute(request.payload as any);
