@@ -1,1 +1,43 @@
-{"name":"hez-dictionary","version":"1.0.0","description":"hez dictionary editor","main":"out/index.js","scripts":{"test":"mocha out/test"},"repository":{"type":"git","url":"git+https://github.com/CrSjimo/hez-dictionary.git"},"keywords":["dictionary","language"],"author":"Crindzebra Sjimo","license":"MIT","bugs":{"url":"https://github.com/CrSjimo/hez-dictionary/issues"},"homepage":"https://github.com/CrSjimo/hez-dictionary#readme","dependencies":{"@hapi/hapi":"^19.2.0","@types/hapi__hapi":"^19.0.3","@types/mysql":"^2.15.15","mysql":"^2.18.1"},"devDependencies":{"@types/chai":"^4.2.11","@types/mocha":"^8.0.0","chai":"^4.2.0","mocha":"^8.0.1","@babel/core":"^7.2.2","@babel/preset-env":"^7.3.1","babel-loader":"^8.0.5","webpack":"^4.29.0","webpack-cli":"^3.2.1","webpack-dev-server":"^3.1.14"}}
+{
+  "name": "hez-dictionary",
+  "version": "1.0.0",
+  "description": "hez dictionary editor",
+  "main": "out/index.js",
+  "scripts": {
+    "test": "mocha out/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrSjimo/hez-dictionary.git"
+  },
+  "keywords": [
+    "dictionary",
+    "language"
+  ],
+  "author": "Crindzebra Sjimo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CrSjimo/hez-dictionary/issues"
+  },
+  "homepage": "https://github.com/CrSjimo/hez-dictionary#readme",
+  "dependencies": {
+    "@hapi/hapi": "^19.2.0",
+    "@types/hapi__hapi": "^19.0.3",
+    "@types/jquery": "^3.5.0",
+    "@types/mysql": "^2.15.15",
+    "jquery": "^3.5.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^8.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
