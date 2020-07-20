@@ -1,15 +1,12 @@
-import * as mysql from 'mysql';
+import * as sqlite from 'sqlite';
+import sqlite3 from 'sqlite3';
 import { ConnectionLayer } from './ConnectionLayer';
+import { ConnectionOptions } from '../declaration/ConnectionOptions';
 
-export function connect(options:mysql.ConnectionConfig):Promise<ConnectionLayer>{
-    let connection = mysql.createConnection(options);
-    return new Promise((resolve,reject)=>{
-        connection.connect((err)=>{
-            if(err){
-                reject(err);
-            }else{
-                resolve(new ConnectionLayer(connection));
-            }
-        });
-    });
+export async function connect(options:ConnectionOptions):Promise<ConnectionLayer>{
+    let connection = await sqlite.open({
+        filename:options.path,
+        driver:sqlite3.Database,
+    })
+    return new ConnectionLayer(connection);
 }

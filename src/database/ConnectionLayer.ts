@@ -1,12 +1,12 @@
-import * as mysql from 'mysql';
+import * as sqlite from 'sqlite';
 
 export class ConnectionLayer{
 
-    constructor(connection:mysql.Connection){
+    constructor(connection:sqlite.Database){
         this.connection = connection;
     }
 
-    connection:mysql.Connection;
+    connection:sqlite.Database;
 
     _currentTable:string|null = null;
 
@@ -18,27 +18,11 @@ export class ConnectionLayer{
         this._currentTable = v;
     }
 
-    query(sql:string,values?:any[]):Promise<any>{
-        return new Promise((resolve,reject)=>{
-            this.connection.query(sql,values,(err,results)=>{
-                if(err){
-                    reject(err);
-                }else{
-                    resolve(results);
-                }
-            });
-        });
+    async query(sql:string,values?:any[]):Promise<any>{
+        return await this.connection.all(sql,values)
     }
 
-    terminate():Promise<void>{
-        return new Promise((resolve,reject)=>{
-            this.connection.end((err)=>{
-                if(err){
-                    reject(err);
-                }else{
-                    resolve();
-                }
-            });
-        });
+    async terminate():Promise<void>{
+        await this.connection.close()
     }
 }

@@ -1,6 +1,7 @@
 import { ConnectionLayer } from "../database/ConnectionLayer";
 import { Item } from "../declaration/Item";
 import { PartOfSpeech } from "../declaration/PartOfSpeech";
+import { DictionaryConfig } from "../declaration/DictionaryConfig";
 
 export class Dictionary{
 
@@ -10,43 +11,53 @@ export class Dictionary{
     
     connectionLayer:ConnectionLayer;
 
-    dictionaryName:string|null = null;
+    static DICTIONARY_NAME:string = 'dict';
 
-    checkOpenedDictName(){
-        if(!this.dictionaryName){
-            throw new Error('No dictionary opened.');
-        }
-    }
+    static CONFIG_NAME:string = 'config';
 
-    async initialization(){
-        this.checkOpenedDictName();
-        let query = `create table ${this.dictionaryName}(
-            id int primary key auto_increment,
+    async initialization(config:DictionaryConfig){
+        let query = `create table ${Dictionary.DICTIONARY_NAME}(
+            id integer primary key autoincrement,
             word varchar(64),
             pronunciation varchar(64),
-            part_of_speech enum('noun','verb','adjective','adverb','pronoun','preposition','conjunction','numeral','measure','auxiliary','interjection','imitation','affix'),
-            meaning varchar(1024),
-            translation varchar(1024),
-            example varchar(1024),
-            verb_cases tinyint,
-            note varchar(1024)
+            part_of_speech varchar(64),
+            glosses varchar(1024),
+            translations varchar(1024),
+            examples varchar(1024),
+            note varchar(1024),
+            categories varchar(1024),
+            related_to varchar(1024)
         )`;
         await this.connectionLayer.query(query);
+        query = `create table ${Dictionary.CONFIG_NAME}(
+            lang_name varchar(64),
+            lang_id varchar(64),
+            glossing_lang varchar(1024),
+            part_of_speech_types varchar(1024)
+        )`
+        await this.connectionLayer.query(query);
+        query = `insert into ${Dictionary.CONFIG_NAME} values(?,?,?,?)`
+        await this.connectionLayer.query(query,[
+            config.language.languageName,
+            config.language.languageId,
+            JSON.stringify(config.glossingLanguages),
+            JSON.stringify(config.partOfSpeechTypes),
+        ]);
     }
 
     async addItem(item:Item){
-        this.checkOpenedDictName();
         let result = await this.connectionLayer.query(
-            `insert into ${this.dictionaryName} (word,pronunciation,part_of_speech,meaning,translation,example,verb_cases,note) values(?,?,?,?,?,?,?,?)`,
+            `insert into ${Dictionary.DICTIONARY_NAME} (word,pronunciation,part_of_speech,glosses,translations,examples,note,categories,related_to) values(?,?,?,?,?,?,?,?,?)`,
             [
                 item.word,
                 item.pronunciation,
-                PartOfSpeech[item.part_of_Speech],
-                item.meaning,
-                item.translation,
-                item.example,
-                item.verb_cases,
+                item.part_of_Speech,
+                JSON.stringify(item.glosses),
+                JSON.stringify(item.translations),
+                JSON.stringify(item.examples),
                 item.note,
+                JSON.stringify(item.categories),
+                JSON.stringify(item.related_to),
             ]
         );
         //console.log(result);
@@ -65,7 +76,6 @@ export class Dictionary{
     }
 
     async queryItems(word?:string,pronunciation?:string){
-        this.checkOpenedDictName();
         let clauseArray:string[] = [];
         let valuesArray:string[] = [];
         if(word){
@@ -78,7 +88,7 @@ export class Dictionary{
         }
         let clause = clauseArray.join('and');
         let result:{id:number}[] = await this.connectionLayer.query(
-            `select id from ${this.dictionaryName} where ${clause}`,
+            `select id from ${Dictionary.DICTIONARY_NAME} where ${clause}`,
             valuesArray
         );
         return result.map((v)=>{
@@ -87,7 +97,6 @@ export class Dictionary{
     }
 
     async updateItem(id:number,item:Partial<Item>){
-        this.checkOpenedDictName();
         let setTargetArray:string[] = [];
         let valuesArray:string[] = [];
         for(let key in item){
@@ -95,23 +104,21 @@ export class Dictionary{
             valuesArray.push(item[key as keyof Item] as string);
         }
         let result = await this.connectionLayer.query(
-            `update ${this.dictionaryName} set ${setTargetArray.join(',')} where id = ?`,
+            `update ${Dictionary.DICTIONARY_NAME} set ${setTargetArray.join(',')} where id = ?`,
             [...valuesArray,id],
         );
     }
 
     async getItems(idList:number[]){
-        this.checkOpenedDictName();
         let result:Item[] = await this.connectionLayer.query(
-            `select * from ${this.dictionaryName} where id in (${idList.join(',')})`
+            `select * from ${Dictionary.DICTIONARY_NAME} where id in (${idList.join(',')})`
         );
         return result;
     }
 
     async deleteItems(idList:number[]){
-        this.checkOpenedDictName();
         let result = await this.connectionLayer.query(
-            `delete from ${this.dictionaryName} where id in (${idList.join(',')})`
+            `delete from ${Dictionary.DICTIONARY_NAME} where id in (${idList.join(',')})`
         );
         return result;
     }

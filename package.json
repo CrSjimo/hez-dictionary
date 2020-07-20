@@ -2,7 +2,7 @@
   "name": "hez-dictionary",
   "version": "1.0.0",
   "description": "hez dictionary editor",
-  "main": "out/index.js",
+  "main": "out/app/main.js",
   "scripts": {
     "test": "mocha out/test"
   },
@@ -22,11 +22,15 @@
   "homepage": "https://github.com/CrSjimo/hez-dictionary#readme",
   "dependencies": {
     "@hapi/hapi": "^19.2.0",
+    "@material/mwc-button": "^0.17.2",
+    "@material/mwc-dialog": "^0.17.2",
+    "@material/mwc-list": "^0.17.2",
+    "@material/mwc-textfield": "^0.17.2",
     "@types/hapi__hapi": "^19.0.3",
-    "@types/jquery": "^3.5.0",
     "@types/mysql": "^2.15.15",
-    "jquery": "^3.5.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "sqlite": "^4.0.12",
+    "sqlite3": "^5.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
