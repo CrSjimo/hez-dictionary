@@ -2,21 +2,33 @@
     <head>
         <meta charset="utf-8">
         <title>Dictionary Editor</title>
-        <script src="/dist/bundle.js"></script>
-        <link rel="stylesheet" href="css/layout.css">
+        <script src="../out/dist/bundle.js"></script>
+        <!-- <link rel="stylesheet" href="css/layout.css"> -->
+        <link href="css/icon.css" rel="stylesheet">
     </head>
     <body>
         <div id="container">
             <div id="left">
-                <div id="action-area">
-
+                <div class="center-align space-around-justify action-area" id="file-action-area">
+                    <mwc-button icon="create">Edit mode</mwc-button>
+                    <mwc-button icon="article" style="display: none;">View mode</mwc-button>
+                    <mwc-button icon="clear">Close</mwc-button>
                 </div>
                 <div id="input-area">
-                    
+                    <mwc-select class="full-width" label="Index Mode"></mwc-select>
+                    <mwc-textfield class="full-width" label="Search"></mwc-textfield>
+                    <mwc-button class="full-width" icon="add_circle" raised>Add new item</mwc-button>
+                    <mwc-list></mwc-list>
                 </div>
             </div>
             <div id="right">
-                
+                <div class="center-align action-area" id="editing-action-area">
+                    <mwc-icon-button icon="arrow_back"></mwc-icon-button>
+                    <mwc-icon-button icon="arrow_forward"></mwc-icon-button>
+                    <mwc-icon-button icon="save"></mwc-icon-button>
+                    <mwc-icon-button icon="undo"></mwc-icon-button>
+                    <mwc-icon-button icon="redo"></mwc-icon-button>
+                </div>
             </div>
         </div>
     </body>
