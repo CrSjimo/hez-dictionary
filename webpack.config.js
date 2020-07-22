@@ -1,7 +1,7 @@
 const path = require('path');
 module.exports = {
   mode: 'development',
-  entry: path.join(__dirname, 'out', 'app', 'view','index'),
+  entry: path.join(__dirname, 'out', 'view','index'),
   watch: true,
   output: {
     path: path.join(__dirname,'out','dist'),

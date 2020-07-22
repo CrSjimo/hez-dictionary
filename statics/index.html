@@ -3,31 +3,44 @@
         <meta charset="utf-8">
         <title>Dictionary Editor</title>
         <script src="../out/dist/bundle.js"></script>
+        <script src="../dist/test-test.js"></script>
         <!-- <link rel="stylesheet" href="css/layout.css"> -->
         <link href="css/icon.css" rel="stylesheet">
     </head>
     <body>
         <div id="container">
-            <div id="left">
-                <div class="center-align space-around-justify action-area" id="file-action-area">
-                    <mwc-button icon="create">Edit mode</mwc-button>
-                    <mwc-button icon="article" style="display: none;">View mode</mwc-button>
-                    <mwc-button icon="clear">Close</mwc-button>
-                </div>
-                <div id="input-area">
-                    <mwc-select class="full-width" label="Index Mode"></mwc-select>
-                    <mwc-textfield class="full-width" label="Search"></mwc-textfield>
-                    <mwc-button class="full-width" icon="add_circle" raised>Add new item</mwc-button>
-                    <mwc-list></mwc-list>
-                </div>
+            <div class="center-align center-justify column-direction full-width" id="welcome-page">
+                <section class="center-align center-justify column-direction">
+                    <h2>Actions</h2>
+                    <mwc-button icon="launch">Open a dictionary</mwc-button>
+                    <mwc-button icon="add_circle">Create a dictionary</mwc-button>
+                </section>
+                <section class="center-align center-justify column-direction">
+                    <h2>Recent</h2>
+                </section>
             </div>
-            <div id="right">
-                <div class="center-align action-area" id="editing-action-area">
-                    <mwc-icon-button icon="arrow_back"></mwc-icon-button>
-                    <mwc-icon-button icon="arrow_forward"></mwc-icon-button>
-                    <mwc-icon-button icon="save"></mwc-icon-button>
-                    <mwc-icon-button icon="undo"></mwc-icon-button>
-                    <mwc-icon-button icon="redo"></mwc-icon-button>
+            <div id="editor" style="display: none;">
+                <div id="left">
+                    <div class="center-align space-around-justify action-area" id="file-action-area">
+                        <mwc-button icon="create">Edit mode</mwc-button>
+                        <mwc-button icon="article" style="display: none;">View mode</mwc-button>
+                        <mwc-button icon="clear">Close</mwc-button>
+                    </div>
+                    <div id="input-area">
+                        <mwc-button class="full-width" icon="add_circle" raised>Add new item</mwc-button>
+                        <mwc-select class="full-width" label="Index Mode"></mwc-select>
+                        <mwc-textfield class="full-width" label="Search"></mwc-textfield>
+                        <mwc-list></mwc-list>
+                    </div>
+                </div>
+                <div id="right">
+                    <div class="center-align action-area" id="editing-action-area">
+                        <mwc-icon-button icon="arrow_back"></mwc-icon-button>
+                        <mwc-icon-button icon="arrow_forward"></mwc-icon-button>
+                        <mwc-icon-button icon="save"></mwc-icon-button>
+                        <mwc-icon-button icon="undo"></mwc-icon-button>
+                        <mwc-icon-button icon="redo"></mwc-icon-button>
+                    </div>
                 </div>
             </div>
         </div>

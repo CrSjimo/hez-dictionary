@@ -1,5 +1,3 @@
-import { PartOfSpeech } from "./PartOfSpeech";
-
 export interface Item{
     word: string;
     pronunciation: string;

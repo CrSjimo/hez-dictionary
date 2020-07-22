@@ -1,4 +1,4 @@
-import '../../../statics/css/layout.css';
+import '../../statics/css/layout.css';
 import '@material/mwc-button';
 import '@material/mwc-list';
 import '@material/mwc-dialog';

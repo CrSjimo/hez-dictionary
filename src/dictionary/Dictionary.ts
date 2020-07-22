@@ -1,7 +1,6 @@
 import { ConnectionLayer } from "../database/ConnectionLayer";
-import { Item } from "../declaration/Item";
-import { PartOfSpeech } from "../declaration/PartOfSpeech";
-import { DictionaryConfig } from "../declaration/DictionaryConfig";
+import { Item } from "../declaration/dictionary/Item";
+import { DictionaryConfig } from "../declaration/dictionary/DictionaryConfig";
 
 export class Dictionary{
 

@@ -4,7 +4,10 @@
   "description": "hez dictionary editor",
   "main": "out/app/main.js",
   "scripts": {
-    "test": "mocha out/test"
+    "test": "mocha out/test",
+    "build": "stencil build --docs",
+    "start": "stencil build --dev --watch --serve",
+    "generate": "stencil generate"
   },
   "repository": {
     "type": "git",
@@ -31,6 +34,7 @@
     "@types/hapi__hapi": "^19.0.3",
     "@types/mysql": "^2.15.15",
     "electron": "^9.1.1",
+    "lit-element": "^2.3.1",
     "mysql": "^2.18.1",
     "sqlite": "^4.0.12",
     "sqlite3": "^5.0.0"
@@ -47,6 +51,7 @@
     "style-loader": "^1.2.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "workbox-build": "4.3.1"
   }
 }

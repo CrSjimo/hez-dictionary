@@ -1,7 +1,5 @@
 import { connect } from "../database/connect";
 import { Dictionary } from "../dictionary/Dictionary";
-import { PartOfSpeech } from "../declaration/PartOfSpeech";
-import { VerbCases } from "../declaration/VerbCases";
 
 (async()=>{
     let connectionLayer = await connect({
