@@ -1,7 +1,7 @@
 const path = require('path');
 module.exports = {
   mode: 'development',
-  entry: path.join(__dirname, 'out', 'view','index'),
+  entry: path.join(__dirname, 'out', 'app','index'),
   watch: true,
   output: {
     path: path.join(__dirname,'out','dist'),
@@ -9,6 +9,7 @@ module.exports = {
     filename: "bundle.js",
     chunkFilename: '[name].js'
   },
+  target:'node',
   module: {
     rules: [
       {

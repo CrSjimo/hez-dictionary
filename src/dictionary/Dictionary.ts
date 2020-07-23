@@ -44,6 +44,19 @@ export class Dictionary{
         ]);
     }
 
+    async getConfig():Promise<DictionaryConfig>{
+        let query = `select * from ${Dictionary.CONFIG_NAME}`;
+        let result = await this.connectionLayer.query(query);
+        return {
+            language:{
+                languageName: result[0].lang_name,
+                languageId: result[0].lang_id,
+            },
+            glossingLanguages: JSON.parse(result[0].glossing_lang),
+            partOfSpeechTypes: JSON.parse(result[0].part_of_speech_types),
+        }
+    }
+
     async addItem(item:Item){
         let result = await this.connectionLayer.query(
             `insert into ${Dictionary.DICTIONARY_NAME} (word,pronunciation,part_of_speech,glosses,translations,examples,note,categories,related_to) values(?,?,?,?,?,?,?,?,?)`,

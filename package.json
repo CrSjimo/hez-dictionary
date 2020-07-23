@@ -5,9 +5,7 @@
   "main": "out/app/main.js",
   "scripts": {
     "test": "mocha out/test",
-    "build": "stencil build --docs",
-    "start": "stencil build --dev --watch --serve",
-    "generate": "stencil generate"
+    "component": "node development_utils/createNewComponent.js"
   },
   "repository": {
     "type": "git",
@@ -46,6 +44,7 @@
     "@types/mocha": "^8.0.0",
     "babel-loader": "^8.0.5",
     "chai": "^4.2.0",
+    "change-case": "^4.1.1",
     "css-loader": "^3.6.0",
     "mocha": "^8.0.1",
     "style-loader": "^1.2.1",

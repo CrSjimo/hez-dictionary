@@ -1,0 +1,1 @@
+export const commandMap:Map<string,()=>any> = new Map();
