@@ -1,6 +1,5 @@
-import { registerMenu } from "./application_menu/registerMenu";
-import { mainWindow } from "../main";
+import { ipcStartListening } from "./ipc/ipcStartLisening";
 
 export function initialization(){
-    registerMenu();
+    ipcStartListening();
 }

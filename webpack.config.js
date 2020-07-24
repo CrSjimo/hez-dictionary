@@ -9,7 +9,10 @@ module.exports = {
     filename: "bundle.js",
     chunkFilename: '[name].js'
   },
-  target:'node',
+  target:'electron-renderer',
+  externals:{
+    sqlite3:'commonjs sqlite3',
+  },
   module: {
     rules: [
       {

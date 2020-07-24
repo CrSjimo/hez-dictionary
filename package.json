@@ -2,7 +2,7 @@
   "name": "hez-dictionary",
   "version": "1.0.0",
   "description": "hez dictionary editor",
-  "main": "out/app/main.js",
+  "main": "out/main.js",
   "scripts": {
     "test": "mocha out/test",
     "component": "node development_utils/createNewComponent.js"

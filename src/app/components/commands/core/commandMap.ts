@@ -1,1 +1,1 @@
-export const commandMap:Map<string,()=>any> = new Map();
+export const commandMap:Map<string,(...args:any[])=>any> = new Map();
