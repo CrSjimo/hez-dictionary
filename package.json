@@ -31,7 +31,7 @@
     "@material/mwc-textfield": "^0.17.2",
     "@types/hapi__hapi": "^19.0.3",
     "@types/mysql": "^2.15.15",
-    "electron": "^9.1.1",
+    "electron": "^9.4.0",
     "lit-element": "^2.3.1",
     "mysql": "^2.18.1",
     "sqlite": "^4.0.12",
